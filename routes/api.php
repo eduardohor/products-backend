@@ -11,9 +11,9 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('jwt.auth')->group(function () {
   Route::get('categories', [CategoryController::class, 'index']);
-  Route::post('categories/store', [CategoryController::class, 'store']);
+  Route::post('categories', [CategoryController::class, 'store']);
 
-  Route::post('products/store', [ProductController::class, 'store']);
+  Route::post('products', [ProductController::class, 'store']);
   Route::put('products/{id}', [ProductController::class, 'update']);
   Route::delete('products/{id}', [ProductController::class, 'destroy']);
   Route::get('products/{id}', [ProductController::class, 'show']);

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCategoryRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -14,11 +14,15 @@ class CategoryController extends Controller
         $this->category = $category;
     }
 
-    public function store(Request $request){
-        return $category = $this->category->create($request->all());
+    public function store(StoreCategoryRequest $request)
+    {
+        $category = $this->category->create($request->all());
+        return response()->json($category, 201);
     }
 
-    public function index(){
-        return $category = $this->category->all();
+    public function index()
+    {
+        $category = $this->category->all();
+        return response()->json($category, 200);
     }
 }
