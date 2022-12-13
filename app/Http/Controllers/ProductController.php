@@ -30,7 +30,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $product = $this->product->find($id);
+        $product = $this->product->with('category')->find($id);
         if ($product == null) {
             return response()->json(['erro' => 'Recurso solicitado não existe'], '404');
         }
